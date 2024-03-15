@@ -6,13 +6,28 @@
 </head>
 <body>
 <form action="">
-  <label for="check1">Check1</label>
-  <input type="checkbox" name="check1" id="check1">
+  <label for="check1">Харківська міська рада</label>
+  <input type="checkbox" name="04059243" id="04059243">
 
-  <label for="check2">Check2</label>
-  <input type="checkbox" name="check2" id="check2">
-
-  <button type="submit">Save</button>
+  <label for="check2">КП Харківський метрополітен</label>
+  <input type="checkbox" name="04805918" id="04805918">
 </form>
+
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script>
+        // Init TWA
+        Telegram.WebApp.ready();
+
+        // Show main button
+        Telegram.WebApp.MainButton.setParams({
+            text: 'Зберегти'
+        });
+        Telegram.WebApp.MainButton.onClick(function () {
+            Telegram.WebApp.showAlert('Main Button was clicked')
+        });	
+        Telegram.WebApp.MainButton.show();
+
+    </script>
+    
 </body>
 </html>
