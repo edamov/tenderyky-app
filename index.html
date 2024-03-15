@@ -31,8 +31,8 @@
             text: 'Зберегти'
         });
         Telegram.WebApp.MainButton.onClick(function () {
-            let user = Telegram.WebAppUser;
-            Telegram.WebApp.showAlert('User id: ' + user.id);
+            let user = Telegram.WebApp.initData;
+            Telegram.WebApp.showAlert('User id: ' + user);
         });	
         Telegram.WebApp.MainButton.show();
 
