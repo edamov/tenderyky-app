@@ -30,7 +30,7 @@
             text: 'Click'
         });
         Telegram.WebApp.MainButton.onClick(function () {
-            Telegram.WebApp.showAlert('Main Button was clicked ')
+            Telegram.WebApp.showAlert('Main Button was clicked ' + Telegram.WebApp.initDataUnsafe.user.id)
         });	
 
                 Telegram.WebApp.MainButton.show();
