@@ -27,11 +27,10 @@
 
         // Show main button
         Telegram.WebApp.MainButton.setParams({
-            text: 'Зберегти'
+            text: 'Click'
         });
         Telegram.WebApp.MainButton.onClick(function () {
-            const { first_name, last_name, username } = Telegram.WebApp.initData.user;
-            Telegram.WebApp.showAlert('Main Button was clicked ' + username)
+            Telegram.WebApp.showAlert('Main Button was clicked ')
         });	
 
                 Telegram.WebApp.MainButton.show();
