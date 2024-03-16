@@ -22,6 +22,7 @@
 
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <script>
+    loadSavedCheckboxes();
     // Init TWA
     Telegram.WebApp.ready();
 
@@ -47,7 +48,7 @@
         console.log(checkedValues);
 
         const xhr = new XMLHttpRequest();
-        xhr.open("POST", " https://nwz4qklmtt.sharedwithexpose.com/api/update-settings", true);  // Replace with your URL
+        xhr.open("POST", "https://nwz4qklmtt.sharedwithexpose.com/api/update-settings", true);  // Replace with your URL
 
         // Set request header (optional, but useful for some servers)
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
@@ -80,6 +81,32 @@
 
     Telegram.WebApp.MainButton.show();
 
+    function loadSavedCheckboxes() {
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", "https://nwz4qklmtt.sharedwithexpose.com/api/get-settings", true);  // Replace with your URL
+
+        // Function to handle successful response
+        xhr.onload = function() {
+            if (xhr.status === 200) {
+                const savedValues = JSON.parse(xhr.responseText);
+                if (savedValues) {
+                    for (const checkbox of checkboxes) {
+                        checkbox.checked = savedValues.includes(checkbox.id);
+                    }
+                }
+            } else {
+                console.error("Error:", xhr.statusText);
+            }
+        };
+
+        // Function to handle errors
+        xhr.onerror = function() {
+            console.error("Error:", xhr.statusText);
+        };
+
+        // Send the AJAX request
+        xhr.send();
+    }
 </script>
 
 </body>
