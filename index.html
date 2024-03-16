@@ -7,81 +7,80 @@
 </head>
 <body>
 
-    <div class="flex flex-col items-center justify-center h-screen">
-  <div class="flex flex-col space-y-2">
-    <label for="checkbox1" class="flex items-center space-x-2">
-      <input type="checkbox" id="04059243" name="04059243" class="w-5 h-5 accent-blue-600">
-      <span>Харківська міська рада</span>
-    </label>
-    <label for="checkbox2" class="flex items-center space-x-2">
-      <input type="checkbox" id="04805918" name="04805918" class="w-5 h-5 accent-blue-600">
-      <span>КП Харківський метрополітен</span>
-    </label>
-  </div>
+<div class="flex flex-col items-center justify-center h-screen">
+    <div class="flex flex-col space-y-2">
+        <label for="checkbox1" class="flex items-center space-x-2">
+            <input type="checkbox" id="04059243" name="04059243" class="w-5 h-5 accent-blue-600">
+            <span>Харківська міська рада</span>
+        </label>
+        <label for="checkbox2" class="flex items-center space-x-2">
+            <input type="checkbox" id="04805918" name="04805918" class="w-5 h-5 accent-blue-600">
+            <span>КП Харківський метрополітен</span>
+        </label>
+    </div>
 </div>
 
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <script>
-        // Init TWA
-        Telegram.WebApp.ready();
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<script>
+    // Init TWA
+    Telegram.WebApp.ready();
 
-        // Show main button
-        Telegram.WebApp.MainButton.setParams({
-            text: 'Click'
-        });
-        Telegram.WebApp.MainButton.onClick(function () {
-            Telegram.WebApp.showAlert('Main Button was clicked ' + Telegram.WebApp.initDataUnsafe.user.id);
+    // Show main button
+    Telegram.WebApp.MainButton.setParams({
+        text: 'Click'
+    });
+    Telegram.WebApp.MainButton.onClick(function () {
+        Telegram.WebApp.showAlert('Main Button was clicked ' + Telegram.WebApp.initDataUnsafe.user.id);
 
-          //       const checkboxes = document.querySelectorAll("input[type='checkbox']");
+        const checkboxes = document.querySelectorAll("input[type='checkbox']");
 
-          //   // Create an empty array to store checked values
-          //   const checkedValues = [];
-        
-          //   // Loop through checkboxes and collect IDs of checked ones
-          //   for (const checkbox of checkboxes) {
-          //     if (checkbox.checked) {
-          //       checkedValues.push(checkbox.id);
-          //     }
-          //   }
+        // Create an empty array to store checked values
+        const checkedValues = [];
 
-          //   console.log(checkedValues);
+        // Loop through checkboxes and collect IDs of checked ones
+        for (const checkbox of checkboxes) {
+            if (checkbox.checked) {
+                checkedValues.push(checkbox.id);
+            }
+        }
 
-          //   const xhr = new XMLHttpRequest();
-          //   xhr.open("POST", "https://8ebynwauaf.sharedwithexpose.com/api/update-settings", true);  // Replace with your URL
-        
-          //   // Set request header (optional, but useful for some servers)
-          //   xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        
-          //   // Function to handle successful response
-          //   xhr.onload = function() {
-          //     if (xhr.status === 200) {
-          //       console.log("Response:", xhr.responseText);
-          //       // Update UI or perform other actions here
-          //     } else {
-          //       console.error("Error:", xhr.statusText);
-          //     }
-          //   };
-        
-          //   // Function to handle errors
-          //   xhr.onerror = function() {
-          //     console.error("Error:", xhr.statusText);
-          //   };
+        console.log(checkedValues);
 
-          //   const data = {
-          //     checkedCheckboxes: checkedValues.join(","),
-          //     userId: Telegram.WebApp.initDataUnsafe.user.id
-          //   };
-        
-          //   const encodedData = `checkedCheckboxes=${encodeURIComponent(data.checkedCheckboxes)}&userId=${encodeURIComponent(data.userId)}`;
-        
-          //   // Send the AJAX request with encoded data
-          //   xhr.send(encodedData);
-          // });
-        });	
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "https://8ebynwauaf.sharedwithexpose.com/api/update-settings", true);  // Replace with your URL
 
-                Telegram.WebApp.MainButton.show();
+        // Set request header (optional, but useful for some servers)
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
-    </script>
-    
+        // Function to handle successful response
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                console.log("Response:", xhr.responseText);
+                // Update UI or perform other actions here
+            } else {
+                console.error("Error:", xhr.statusText);
+            }
+        };
+
+        // Function to handle errors
+        xhr.onerror = function () {
+            console.error("Error:", xhr.statusText);
+        };
+
+        const data = {
+            checkedCheckboxes: checkedValues.join(","),
+            userId: Telegram.WebApp.initDataUnsafe.user.id
+        };
+
+        const encodedData = `checkedCheckboxes=${encodeURIComponent(data.checkedCheckboxes)}&userId=${encodeURIComponent(data.userId)}`;
+
+        // Send the AJAX request with encoded data
+        xhr.send(encodedData);
+    });
+
+    Telegram.WebApp.MainButton.show();
+
+</script>
+
 </body>
 </html>
