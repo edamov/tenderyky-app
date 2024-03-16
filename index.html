@@ -72,7 +72,7 @@
             userId: Telegram.WebApp.initDataUnsafe.user.id
         };
 
-        const encodedData = `checkedCheckboxes=${encodeURIComponent(data.checkedCheckboxes)}&userId=${encodeURIComponent(data.userId)}`;
+        const encodedData = `procuring_entities=${encodeURIComponent(data.checkedCheckboxes)}&user_id=${encodeURIComponent(data.userId)}`;
 
         // Send the AJAX request with encoded data
         xhr.send(encodedData);
