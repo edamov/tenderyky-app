@@ -30,7 +30,53 @@
             text: 'Click'
         });
         Telegram.WebApp.MainButton.onClick(function () {
-            Telegram.WebApp.showAlert('Main Button was clicked ' + Telegram.WebApp.initDataUnsafe.user.id)
+            Telegram.WebApp.showAlert('Main Button was clicked ' + Telegram.WebApp.initDataUnsafe.user.id);
+
+                const checkboxes = document.querySelectorAll("input[type='checkbox']");
+
+            // Create an empty array to store checked values
+            const checkedValues = [];
+        
+            // Loop through checkboxes and collect IDs of checked ones
+            for (const checkbox of checkboxes) {
+              if (checkbox.checked) {
+                checkedValues.push(checkbox.id);
+              }
+            }
+
+            console.log(checkedValues);
+
+            const xhr = new XMLHttpRequest();
+            xhr.open("POST", "https://8ebynwauaf.sharedwithexpose.com/api/update-settings", true);  // Replace with your URL
+        
+            // Set request header (optional, but useful for some servers)
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        
+            // Function to handle successful response
+            xhr.onload = function() {
+              if (xhr.status === 200) {
+                console.log("Response:", xhr.responseText);
+                // Update UI or perform other actions here
+              } else {
+                console.error("Error:", xhr.statusText);
+              }
+            };
+        
+            // Function to handle errors
+            xhr.onerror = function() {
+              console.error("Error:", xhr.statusText);
+            };
+
+            const data = {
+              checkedCheckboxes: checkedValues.join(","),
+              userId: Telegram.WebApp.initDataUnsafe.user.id
+            };
+        
+            const encodedData = `checkedCheckboxes=${encodeURIComponent(data.checkedCheckboxes)}&userId=${encodeURIComponent(data.userId)}`;
+        
+            // Send the AJAX request with encoded data
+            xhr.send(encodedData);
+          });
         });	
 
                 Telegram.WebApp.MainButton.show();
