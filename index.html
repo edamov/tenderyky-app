@@ -34,7 +34,7 @@
         console.log(checkedValues);
 
         const xhr = new XMLHttpRequest();
-        xhr.open("POST", "https://n2sv3a15mb.sharedwithexpose.com/api/update-settings", true);  // Replace with your URL
+        xhr.open("POST", "https://ddhgrk3w5v..sharedwithexpose.com/api/update-settings", true);  // Replace with your URL
 
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
@@ -52,10 +52,10 @@
 
         const data = {
             checkedCheckboxes: checkedValues.join(","),
-            userId: Telegram.WebApp.initDataUnsafe.user.id
+            initData: Telegram.WebApp.initData
         };
 
-        const encodedData = `procuring_entities=${encodeURIComponent(data.checkedCheckboxes)}&user_id=${encodeURIComponent(data.userId)}`;
+        const encodedData = `procuring_entities=${encodeURIComponent(data.checkedCheckboxes)}&init_data=${encodeURIComponent(data.initData)}`;
 
         xhr.send(encodedData);
     });
@@ -64,7 +64,7 @@
 
     function loadSavedCheckboxes() {
         const xhr = new XMLHttpRequest();
-        xhr.open("GET", "https://n2sv3a15mb.sharedwithexpose.com/api/get-settings?user_id=" + Math.floor(Math.random()*10000) + 1, true);
+        xhr.open("GET", "https://ddhgrk3w5v..sharedwithexpose.com/api/get-settings?init_data=" + Telegram.WebApp.initData, true);
 
         xhr.onload = function() {
             if (xhr.status === 200) {
