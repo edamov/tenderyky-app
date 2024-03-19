@@ -9,12 +9,10 @@
 
 <script src="https://telegram.org/js/telegram-web-app.js"></script>
 <script>
-    const checkboxes = document.querySelectorAll("input[type='checkbox']");
-
-    loadSavedCheckboxes();
-    // Init TWA
     Telegram.WebApp.ready();
     Telegram.WebApp.setBackgroundColor('#FFFFFF');
+
+    loadSavedCheckboxes();
 
     // Show main button
     Telegram.WebApp.MainButton.setParams({
@@ -66,7 +64,8 @@
 
     function loadSavedCheckboxes() {
         const xhr = new XMLHttpRequest();
-        xhr.open("GET", "https://nmmoue0aqp.sharedwithexpose.com/api/get-settings?user_id=" + Telegram.WebApp.initDataUnsafe.user.id, true);
+        // xhr.open("GET", "https://nmmoue0aqp.sharedwithexpose.com/api/get-settings?user_id=" + Telegram.WebApp.initDataUnsafe.user.id, true);
+        xhr.open("GET", "https://nmmoue0aqp.sharedwithexpose.com/api/get-settings?user_id=" + Math.floor(Math.random()*10000) + 1, true);
 
         xhr.onload = function() {
             if (xhr.status === 200) {
